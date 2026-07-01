@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs - Tom Vidal Mathématiques physique-chimie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #afcef2; }
+    </style>
+</head>
+<body class="font-sans text-slate-900 py-10 px-4">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- En-tête -->
+        <header class="mb-10">
+            <div class="flex flex-col md:flex-row items-stretch justify-center gap-6">
+                <div class="flex-shrink-0">
+                    <img src="https://i.imgur.com/XKbpP0A.png" alt="Logo Tom Vidal" class="w-32 h-full max-h-40 object-cover rounded-xl shadow-lg border-2 border-white">
+                </div>
+                <div class="flex flex-col justify-center text-center md:text-left">
+                    <h1 class="text-3xl font-black text-slate-900 tracking-tight leading-none mb-3">
+                        Tom Vidal
+                        <span class="block text-xl font-bold text-slate-600 mt-1">Mathématiques, Physique-Chimie</span>
+                    </h1>
+                    <p class="text-slate-700 font-medium italic">Calculez facilement le tarif de vos cours.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Calculateur -->
+        <div class="bg-white rounded-3xl shadow-xl border border-white/50 p-8 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-3">Niveau scolaire</label>
+                    <select id="level" class="w-full p-4 rounded-xl border border-slate-200 font-bold bg-slate-50 outline-none focus:border-[#afcef2] transition-colors">
+                        <option value="35">Seconde</option>
+                        <option value="42">Première</option>
+                        <option value="49">Terminale</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-3">Heures / semaine</label>
+                    <div class="flex gap-2">
+                        <button onclick="setHours(2)" id="hours-2" class="hours-btn flex-1 p-4 rounded-xl border font-bold selected bg-[#afcef2] text-white">2h</button>
+                        <button onclick="setHours(4)" id="hours-4" class="hours-btn flex-1 p-4 rounded-xl border font-bold">4h</button>
+                        <button onclick="setHours(6)" id="hours-6" class="hours-btn flex-1 p-4 rounded-xl border font-bold">6h</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-3">Option Groupe</label>
+                    <select id="group" class="w-full p-4 rounded-xl border border-slate-200 font-bold bg-slate-50 outline-none focus:border-[#afcef2] transition-colors">
+                        <option value="1">Élève seul</option>
+                        <option value="2">Groupe de 2 (-20%)</option>
+                        <option value="3">Groupe de 3 (-30%)</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="brut-info" class="text-center text-slate-500 text-sm mb-6 border-b border-slate-100 pb-6">
+                Tarif brut avant crédit d'impôt : <span id="brut-h" class="font-bold">35.00</span>€/h (<span id="brut-w" class="font-bold">70.00</span>€/sem)
+            </p>
+
+            <div class="bg-slate-900 rounded-2xl p-8 text-white text-center">
+                <p class="text-slate-400 text-sm mb-4 uppercase tracking-widest font-bold">Reste à charge après crédit d'impôt de 50% :</p>
+                <div class="font-black mb-1">
+                    <span id="net-h" class="text-6xl text-[#afcef2]">17.50</span>
+                    <span class="text-6xl text-[#afcef2]">€</span>
+                    <span class="text-2xl font-medium text-white">/ heure</span>
+                </div>
+                <div class="border-t border-slate-700 pt-6 mt-6">
+                    <p class="text-2xl font-bold">Soit : <span id="net-w" class="text-[#afcef2]">35.00</span> <span class="text-[#afcef2]">€</span> <span class="text-xl font-normal text-white">/ semaine</span></p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 px-2 text-slate-900">Grille tarifaire complète (Horaire)</h2>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm mb-12">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-100 text-slate-600 text-xs uppercase">
+                    <tr>
+                        <th class="p-4">Configuration</th>
+                        <th class="p-4">Seconde</th>
+                        <th class="p-4">Première</th>
+                        <th class="p-4">Terminale</th>
+                    </tr>
+                </thead>
+                <tbody id="matrix-table" class="text-sm divide-y divide-slate-100"></tbody>
+            </table>
+        </div>
+
+        <!-- Bas de page -->
+        <footer class="bg-white/40 border-t border-slate-900/10 p-8 rounded-3xl mt-12">
+            <div class="text-center mb-6">
+                <h3 class="font-bold text-slate-900 mb-2">Besoin d'informations ?</h3>
+                <p class="text-slate-700 mb-4">Pour tout renseignement complémentaire ou demande particulière, n'hésitez pas à me contacter.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 text-sm font-semibold">
+                    <a href="mailto:tomvidal1301@gmail.com" class="text-[#2563eb] hover:underline">tomvidal1301@gmail.com</a>
+                    <span class="hidden sm:inline text-slate-400">|</span>
+                    <span class="text-slate-600">07 81 30 24 97</span>
+                </div>
+            </div>
+            <div class="text-[10px] text-slate-500 text-center pt-6 border-t border-slate-900/10">
+                <p>Tom Vidal — Micro-Entreprise — SIRET 106 318 249 00013</p>
+                <p class="mt-1">Agrément Services à la Personne (SAP) — Crédit d'impôt de 50% selon l'article 199 sexdecies du CGI.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let hours = 2;
+        function setHours(n) {
+            hours = n;
+            document.querySelectorAll('.hours-btn').forEach(b => b.classList.remove('bg-[#afcef2]', 'text-white'));
+            document.getElementById(`hours-${n}`).classList.add('bg-[#afcef2]', 'text-white');
+            calculate();
+        }
+
+        function calculate() {
+            const baseRate = parseFloat(document.getElementById('level').value);
+            const groupVal = parseInt(document.getElementById('group').value);
+            const discount = groupVal === 1 ? 1 : (groupVal === 2 ? 0.8 : 0.7);
+            const brutH = baseRate * discount;
+            const brutW = brutH * hours;
+            const netH = brutH / 2;
+            const netW = brutW / 2;
+            document.getElementById('brut-h').textContent = brutH.toFixed(2);
+            document.getElementById('brut-w').textContent = brutW.toFixed(2);
+            document.getElementById('net-h').textContent = netH.toFixed(2);
+            document.getElementById('net-w').textContent = netW.toFixed(2);
+        }
+
+        const levels = [35, 42, 49];
+        const groups = [
+            { label: "Élève seul", mult: 1 },
+            { label: "Groupe de 2 (-20%)", mult: 0.8 },
+            { label: "Groupe de 3 (-30%)", mult: 0.7 }
+        ];
+
+        const tbody = document.getElementById('matrix-table');
+        groups.forEach(g => {
+            let row = `<tr class="hover:bg-slate-50"><td class="p-4 font-bold text-slate-800">${g.label}</td>`;
+            levels.forEach(l => {
+                let net = (l * g.mult / 2).toFixed(2);
+                row += `<td class="p-4 text-slate-600">${net}€/h</td>`;
+            });
+            tbody.innerHTML += row + '</tr>';
+        });
+
+        document.getElementById('level').onchange = calculate;
+        document.getElementById('group').onchange = calculate;
+        calculate();
+    </script>
+</body>
+</html>
