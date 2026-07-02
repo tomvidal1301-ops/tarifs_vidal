@@ -81,9 +81,12 @@
     </p>
 </div>
 
-        <h2 class="text-xl font-bold mb-6 px-2 text-slate-900">Grille tarifaire complète (Horaire)</h2>
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm mb-12">
-            <table class="w-full text-left border-collapse">
+       <h2 class="text-xl font-bold mb-6 px-2 text-slate-900">Grille tarifaire complète (Horaire)</h2>
+        
+        <!-- Ajout de la classe overflow-x-auto ici -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-12 overflow-x-auto">
+            <!-- Ajout de min-w-[500px] pour éviter que les colonnes ne se compressent trop -->
+            <table class="w-full min-w-[500px] text-left border-collapse">
                 <thead class="bg-slate-100 text-slate-600 text-xs uppercase">
                     <tr>
                         <th class="p-4">Configuration</th>
@@ -95,6 +98,8 @@
                 <tbody id="matrix-table" class="text-sm divide-y divide-slate-100"></tbody>
             </table>
         </div>
+        </footer>
+    </div>
 
         <!-- Bas de page -->
         <footer class="bg-white/40 border-t border-slate-900/10 p-8 rounded-3xl mt-12">
