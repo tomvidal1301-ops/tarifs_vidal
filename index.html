@@ -31,7 +31,7 @@
             </div>
         </header>
 
-        <!-- Calculateur -->
+      <!-- Calculateur -->
         <div class="bg-white rounded-3xl shadow-xl border border-white/50 p-8 mb-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
                 <div>
@@ -60,31 +60,22 @@
                 </div>
             </div>
 
-            <!-- Bloc résultat complet -->
-<div class="bg-slate-900 rounded-2xl p-8 text-white text-center">
-    <p class="text-slate-400 text-sm mb-4 uppercase tracking-widest font-bold">Reste à charge (pour 1 élève) après -50% :</p>
-    
-    <!-- Prix Horaire -->
-    <div class="flex flex-col items-center mb-6">
-        <div class="whitespace-nowrap">
-            <span id="net-h" class="text-5xl md:text-6xl text-[#afcef2] font-black">17.50</span>
-            <span class="text-5xl md:text-6xl text-[#afcef2] font-black">€</span>
-        </div>
-        <span class="text-2xl font-medium text-white">/ heure</span>
-    </div>
+            <p id="brut-info" class="text-center text-slate-500 text-sm mb-6 border-b border-slate-100 pb-6">
+                Tarif brut (pour 1 élève) avant crédit d'impôt : <span id="brut-h" class="font-bold">35.00</span>€/h (<span id="brut-w" class="font-bold">70.00</span>€/sem)
+            </p>
 
-    <!-- Prix Hebdomadaire -->
-    <div class="border-t border-slate-700 pt-6">
-        <div class="flex flex-col items-center text-2xl font-bold">
-            <span>Soit :</span>
-            <div class="whitespace-nowrap">
-                <span id="net-w" class="text-[#afcef2]">35.00</span>
-                <span class="text-[#afcef2]">€</span>
+            <div class="bg-slate-900 rounded-2xl p-8 text-white text-center">
+                <p class="text-slate-400 text-sm mb-4 uppercase tracking-widest font-bold">Reste à charge (pour 1 élève) après crédit d'impôt de 50% :</p>
+                <div class="font-black mb-1">
+                    <span id="net-h" class="text-6xl text-[#afcef2]">17.50</span>
+                    <span class="text-6xl text-[#afcef2]">€</span>
+                    <span class="text-2xl font-medium text-white">/ heure</span>
+                </div>
+                <div class="border-t border-slate-700 pt-6 mt-6">
+                    <p class="text-2xl font-bold">Soit : <span id="net-w" class="text-[#afcef2]">35.00</span> <span class="text-[#afcef2]">€</span> <span class="text-xl font-normal text-white">/ semaine</span></p>
+                </div>
             </div>
-            <span class="text-xl font-normal text-white">/ semaine</span>
         </div>
-    </div>
-</div>
 
         <!-- STREAMING_CHUNK: Disclaimer de tarification -->
 <div class="mt-6 px-4 text-center">
@@ -94,7 +85,7 @@
 </div>
 
        <h2 class="text-xl font-bold mb-6 px-2 text-slate-900">Grille tarifaire complète (Horaire)</h2>
-        
+
         <!-- Ajout de la classe overflow-x-auto ici -->
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-12 overflow-x-auto">
             <!-- Ajout de min-w-[500px] pour éviter que les colonnes ne se compressent trop -->
